@@ -10,8 +10,13 @@ import java.util.List;
 @Entity
 public class Post {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String content;
 
     @CreationTimestamp
@@ -87,7 +92,7 @@ public class Post {
         return "Post{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", content='" + content.substring(0, 20) + '\'' +
+                ", content='" + content.substring(0, 2) + '\'' +
                 ", category=" + category +
                 '}';
     }

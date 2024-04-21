@@ -11,12 +11,15 @@ import java.util.List;
 @Entity
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(nullable = false, unique = true)
     private String name;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private String createdAt;
+    private Date createdAt;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -48,11 +51,11 @@ public class Category {
         this.name = name;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
