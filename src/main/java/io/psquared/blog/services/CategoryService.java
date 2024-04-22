@@ -1,7 +1,7 @@
 package io.psquared.blog.services;
 
 import io.psquared.blog.entity.Category;
-import io.psquared.blog.exceptions.NotFound;
+import io.psquared.blog.exceptions.type.NotFound;
 import io.psquared.blog.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 

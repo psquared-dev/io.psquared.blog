@@ -4,11 +4,10 @@ import io.psquared.blog.dto.PostPatchRequest;
 import io.psquared.blog.dto.PostRequest;
 import io.psquared.blog.dto.PostResponse;
 import io.psquared.blog.entity.Post;
-import io.psquared.blog.exceptions.NotFound;
+import io.psquared.blog.exceptions.type.NotFound;
 import io.psquared.blog.mapper.PostMapper;
 import io.psquared.blog.services.PostService;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

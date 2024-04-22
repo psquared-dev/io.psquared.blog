@@ -2,10 +2,9 @@ package io.psquared.blog.services;
 
 import io.psquared.blog.dto.PostPatchRequest;
 import io.psquared.blog.dto.PostRequest;
-import io.psquared.blog.dto.PostResponse;
 import io.psquared.blog.entity.Category;
 import io.psquared.blog.entity.Post;
-import io.psquared.blog.exceptions.NotFound;
+import io.psquared.blog.exceptions.type.NotFound;
 import io.psquared.blog.repository.CategoryRepository;
 import io.psquared.blog.repository.PostRepository;
 import org.springframework.stereotype.Service;

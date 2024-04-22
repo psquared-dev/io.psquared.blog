@@ -3,13 +3,11 @@ package io.psquared.blog.controller;
 import io.psquared.blog.dto.CategoryRequest;
 import io.psquared.blog.dto.CategoryResponse;
 import io.psquared.blog.entity.Category;
-import io.psquared.blog.exceptions.NotFound;
+import io.psquared.blog.exceptions.type.NotFound;
 import io.psquared.blog.repository.CategoryRepository;
 import io.psquared.blog.services.CategoryService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

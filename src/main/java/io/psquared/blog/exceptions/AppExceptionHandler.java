@@ -1,5 +1,6 @@
 package io.psquared.blog.exceptions;
 
+import io.psquared.blog.exceptions.type.NotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -42,6 +43,8 @@ public class AppExceptionHandler {
     public ResponseEntity<Object> handler(Exception exception, WebRequest request) {
 
         AppResponse appResponse = new AppResponse(exception.getMessage(), LocalDateTime.now(), true);
+
+        exception.printStackTrace();
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(appResponse);
