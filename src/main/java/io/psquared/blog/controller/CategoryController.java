@@ -9,6 +9,7 @@ import io.psquared.blog.services.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,7 +35,9 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public CategoryResponse addCategory(@PathVariable long id){
+    public CategoryResponse addCategory(@PathVariable long id, Authentication authentication){
+        System.out.println(authentication.getName());
+        System.out.println(authentication.getAuthorities());
         CategoryResponse categoryResponse = new CategoryResponse();
         Category category = categoryService
                 .findCategory(id)

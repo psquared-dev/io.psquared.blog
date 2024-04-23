@@ -6,10 +6,6 @@ import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: automatically converts authorities to uppercase
-
-// TODO: perform regex match for phoneNumber
-
 
 public class UserCreateRequest {
     @NotBlank(message = "username is required")

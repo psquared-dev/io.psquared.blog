@@ -4,6 +4,7 @@ import io.psquared.blog.entity.User;
 import io.psquared.blog.filter.JWTTokenGeneratorFilter;
 import io.psquared.blog.filter.JWTTokenValidatorFilter;
 import io.psquared.blog.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,10 @@ import java.util.Optional;
 
 @Configuration
 public class ProjectConfig {
+
+    @Autowired
+    private CustomAccDen customAccDen;
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -42,8 +47,15 @@ public class ProjectConfig {
         http.csrf(csrf -> csrf.disable());
 
         http.authorizeHttpRequests(
-                auth -> auth.anyRequest().authenticated()
+                auth -> auth
+                        .requestMatchers("/category/**").hasAnyAuthority("READ", "VIEW")
+                        .requestMatchers("/user/login").authenticated()
+                        .requestMatchers("/user/create").permitAll()
+
+//                        .anyRequest().authenticated()
         );
+
+        http.exceptionHandling(e -> e.accessDeniedHandler(customAccDen));
 
 //        http.formLogin(Customizer.withDefaults());
         http.httpBasic(Customizer.withDefaults());
